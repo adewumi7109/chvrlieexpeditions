@@ -51,10 +51,10 @@ function Navbar() {
                             <span><a href="">Register</a></span>
                         </div>
 
-                        <FaShoppingCart className={`${toggle? "absolute bottom-5 right-5 md:static":" hidden"}`}  />
+               <GiHamburgerMenu onClick={toggleMenu} className={`${toggle? "absolute bottom-5 right-5 md:hidden":" hidden"}`} />
                       </div>
              
-               <GiHamburgerMenu onClick={toggleMenu} className={`${toggle? " md:hidden":" hidden"}`} />
+               <FaShoppingCart className={`${toggle? " md:static":" hidden"}`}  />
               
                 <FaTimes onClick={removeMenu}  className={`${!toggle? "absolute t-0 right-5 ":" hidden"}`}/>
                 
