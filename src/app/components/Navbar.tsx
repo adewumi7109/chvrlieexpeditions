@@ -38,7 +38,7 @@ function Navbar() {
                  
                         <ul className={`${toggle? "hidden md:flex gap-5 text-[1.1rem]": "flex    flex-col  gap-5 justify-around text-[1.1rem]"}`}>
                           {Links.map((link)=>(
-                           <a href={link.link}>{link.name}</a>
+                           <a key={link.name} href={link.link}>{link.name}</a>
                           ))}
 
                         </ul>
