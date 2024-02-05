@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 
 function Product({ product }: { product: any }) {

@@ -3,6 +3,7 @@ import React, { use, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaShoppingCart, FaTimes } from 'react-icons/fa';
+import { useUser } from '../context/user';
 function Navbar() {
 
     const Links = [
@@ -38,6 +39,22 @@ function Navbar() {
           };
     }, [])
 
+    const user = useUser()
+
+    const isLoggedIn =()=>{
+        if(user && user?.id){
+            return(
+                <h1 className={`${toggle? "  hidden md:block cursor-pointer":" "}`}>Hi, {user.email}</h1>
+            )
+        }
+        return(
+            <div className={`${toggle? " hidden md:block":" flex  gap-1"}`}>
+            <span><a href="/auth/login">Sign in</a></span>
+            <span>/</span>
+            <span><a href="">Register</a></span>
+        </div>
+        )
+    }
 
     return (
         <div>
@@ -62,11 +79,7 @@ function Navbar() {
                  
                    
                       <div className='flex gap-2 items-center'>
-                      <div className={`${toggle? " hidden md:block":" flex  gap-1"}`}>
-                            <span><a href="">Sign in</a></span>
-                            <span>/</span>
-                            <span><a href="">Register</a></span>
-                        </div>
+                  {isLoggedIn()}
 
                <GiHamburgerMenu size={30} onClick={toggleMenu} className={`${toggle? "absolute bottom-5 right-5 md:hidden":" hidden"}`} />
                <FaShoppingCart size={30} className={`${toggle? " md:static":" hidden"}`}  />

@@ -1,15 +1,42 @@
 "use client"
+import { supabase } from '@/app/lib/supabase'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 function Page() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-  
-    const handleSubmit = (e:any) => {
-      e.preventDefault();
-      // Add your login logic here
-      console.log('Login submitted with:', { email, password });
-    };
+  const router = useRouter()
+  const [data, setData] = useState<{
+    email: string,
+    password: string
+}>({
+    email: '',
+    password: ''
+})
+const handleSubmit = async (e:any) => {
+  e.preventDefault();
+    try {
+        let { data: dataUser, error } = await supabase
+            .auth
+            .signInWithPassword({
+                email: data.email,
+                password: data.password
+            })
+            console.log(dataUser)
+       if(dataUser){
+        router.refresh();
+       }
+    } catch (error) {
+        console.log(error)
+    }
+}
+const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setData((prev: any) => ({
+        ...prev,
+        [name]: value,
+
+    }))
+}
   return (
     <div className="flex items-center justify-center min-h-[80vh] md:min-h-screen">
       <div className="bg-primaryColor  border-solid border border-textColor p-8 shadow-md rounded-md w-96">
@@ -23,8 +50,8 @@ function Page() {
               type="email"
               id="email"
               name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={data?.email}
+              onChange={handleChange}
               className="mt-1 p-2 w-full bg-transparent border-solid border border-textColor  outline-0 rounded-md"
               required
             />
@@ -37,8 +64,8 @@ function Page() {
               type="password"
               id="password"
               name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={data?.password}
+              onChange={handleChange}
               className="mt-1 p-2 w-full bg-transparent border-solid border border-textColor  outline-0 rounded-md"
               required
             />
