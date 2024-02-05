@@ -23,7 +23,9 @@ const handleSubmit = async (e:any) => {
             })
             console.log(dataUser)
        if(dataUser){
+      
         router.refresh();
+      
        }
     } catch (error) {
         console.log(error)
