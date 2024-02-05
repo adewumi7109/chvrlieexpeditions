@@ -1,5 +1,5 @@
 "use client"
-import React, { use, useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaShoppingCart, FaTimes } from 'react-icons/fa';
@@ -14,6 +14,7 @@ function Navbar() {
 
 
     ]
+    // Toggle 
     const [toggle, setToggle] = useState(true);
     const toggleMenu = ()=>{
         setToggle(false)
@@ -21,6 +22,22 @@ function Navbar() {
     const removeMenu = ()=>{
         setToggle(true)
     }
+
+    // Scroll
+
+    const [isScrolled, setIsScrolled] = useState(false);
+    useEffect(()=>{
+        const handleScroll =()=>{
+           const scrolled = window.scrollY > 40;
+             setIsScrolled(scrolled)
+         
+        }
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+          };
+    }, [])
+
 
     return (
         <div>
@@ -34,7 +51,7 @@ function Navbar() {
 
             </div>
             <div className='bg-secondaryColor'>
-                <nav className='w-[100%] md:w-[90%] md:py-4 md:px-0 py-5 px-7 md:relative bg-secondaryColor md:justify-between absolute flex-col md:flex-row  z-20 right-0 left-0 mx-auto my-0  flex  '>
+                <nav className={`w-[100%] md:w-[100%] md:py-4 md:px-7 py-5 px-7  bg-secondaryColor md:justify-between fixed flex-col md:flex-row  z-20 right-0 left-0 mx-auto my-0  flex ${isScrolled? 'top-0 transition-opacity' : ''} `}>
                  
                         <ul className={`${toggle? "hidden md:flex gap-5 text-[1.1rem]": "flex    flex-col  gap-5 justify-around text-[1.1rem]"}`}>
                           {Links.map((link)=>(
