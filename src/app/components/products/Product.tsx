@@ -5,7 +5,7 @@ import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 
 function Product({ product }: { product: any }) {
     return (
-        <div key={product.id} className='w-[100%]  border-solid border border-textColor '>
+        <div  className='w-[100%]  border-solid border border-textColor '>
           
           <img src="/banner.jpg" className="w-full" alt="" />
           <div className='flex p-4 justify-between items-center'>
