@@ -40,7 +40,7 @@ function Navbar() {
     }, [])
 
     const user = useUser()
-
+    
     const isLoggedIn =()=>{
         if(user && user?.id){
             return(
@@ -55,6 +55,9 @@ function Navbar() {
         </div>
         )
     }
+    useEffect(() => {
+   
+      }, []);
 
     return (
         <div>

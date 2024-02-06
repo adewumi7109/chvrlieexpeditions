@@ -11,7 +11,7 @@ function Product({ product }: { product: any }) {
           <div className='flex p-4 justify-between items-center'>
                
                     <span>
-                        {product?.name}
+                        {product?.title}
                     </span>
               
                 <span>
