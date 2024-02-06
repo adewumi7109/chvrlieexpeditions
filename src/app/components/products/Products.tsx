@@ -27,9 +27,9 @@ function Products() {
   <h1 className='mb-8 text-2xl font-bold'>NATURE PHOTOS</h1>
      <div className='grid grid-cols-1 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 gap-5 '>
         {products.map((product:any)=>(
-            <div>
+          
             <Product key={product.id} product = {product}/>
-            </div>
+           
         ))}
     </div>
  </div>
