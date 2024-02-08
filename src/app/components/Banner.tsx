@@ -6,11 +6,11 @@ function Banner() {
     <div className="absolute inset-0 bg-black opacity-50"></div>
     <div className="text-center z-10">
     <input
-        className="rounded-l-md   border-[2px]  border-textColor bg-secondaryColor px-3 py-2 focus:outline-none focus:border-secondaryColor"
+        className="rounded-l-md   border-[1px]  border-textColor bg-secondaryColor px-3 py-2 focus:outline-none focus:border-secondaryColor"
         type="text"
         placeholder="Search..."
       />
-      <button className="px-4 py-2 bg-secondaryColor border-secondaryColor border-[2px] text-textColor font-semibold rounded-r-md  focus:outline-none">
+      <button className="px-4 py-2 bg-secondaryColor border-secondaryColor border-[1px] text-textColor font-semibold rounded-r-md  focus:outline-none">
         Search
       </button>
     </div>
