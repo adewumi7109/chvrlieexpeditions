@@ -1,10 +1,15 @@
 "use client"
+import { useUser } from '@/app/context/user'
 import { supabase } from '@/app/libs/supabase'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 function Page() {
   const router = useRouter()
+  const user = useUser()
+ if(user.email !== null){
+  router.back()
+ }
   const [data, setData] = useState<{
     email: string,
     password: string
@@ -21,10 +26,11 @@ const handleSubmit = async (e:any) => {
                 email: data.email,
                 password: data.password
             })
-            console.log(dataUser)
+          
+            
        if(dataUser){
       
-        router.refresh();
+        router.back()
       
        }
     } catch (error) {

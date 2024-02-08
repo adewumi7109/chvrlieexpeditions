@@ -44,7 +44,11 @@ function Navbar() {
     const isLoggedIn =()=>{
         if(user && user?.id){
             return(
-                <h1 className={`${toggle? "  hidden md:block cursor-pointer":" "}`}>Hi, {user.email}</h1>
+                <div className='flex flex-col  md:flex-row md:items-center gap-5'>
+                    <h1 className={`${toggle? "  hidden md:block cursor-pointer":" mt-5"}`}>Hi, {user.email}</h1>
+                    <button  onClick={() => { user.signOut(); }} className={`${toggle? "md:block hidden bg-textColor w-[100px] text-primaryColor p-1 rounded":"bg-textColor w-[100px] text-primaryColor p-1 rounded text-center"}`}>Log out</button>
+                {/* <button className=''>Log out</button> */}
+                </div>
             )
         }
         return(
@@ -55,9 +59,7 @@ function Navbar() {
         </div>
         )
     }
-    useEffect(() => {
-   
-      }, []);
+  
 
     return (
         <div>

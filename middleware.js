@@ -1,7 +1,7 @@
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function middleware(req: NextRequest) {
+export async function middleware(req) {
   const res = NextResponse.next()
   const supabase = createMiddlewareClient({ req, res })
   const { data } = await supabase.auth.getSession()
@@ -13,7 +13,7 @@ export async function middleware(req: NextRequest) {
   // Must be a session to see these routes
   if (
     !data?.session && (
-    req.nextUrl.pathname.startsWith('/checkout') ||
+    req.nextUrl.pathname.startsWith('/') ||
     req.nextUrl.pathname.startsWith('/success') ||
     req.nextUrl.pathname.startsWith('/orders') ||
     req.nextUrl.pathname.startsWith('/address')
@@ -22,4 +22,10 @@ export async function middleware(req: NextRequest) {
   }
 
   return res
+}
+
+export const config = {
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico).*)',
+  ],
 }
