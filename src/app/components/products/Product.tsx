@@ -7,7 +7,7 @@ function Product({ product }: { product: any }) {
     return (
         <div key={product.id} className='w-[100%]  border-solid border border-textColor '>
           
-          <img src="/banner.jpg" className="w-full" alt="" />
+          <img src={product.image_url}  className="w-full" alt="" />
           <div className='flex p-4 justify-between items-center'>
                
                     <span>
@@ -16,8 +16,11 @@ function Product({ product }: { product: any }) {
               
                 <span>
                 $ {product?.price}
+                
+                
                 </span>
           </div>
+          {product?.image_url} 
           <button className='w-full  h-12 hover:bg-textColor hover:text-primaryColor bg-transparent border-solid border border-textColor '>Add to cart</button>
           {/* <div className='flex p-4 py-2 border-solid border border-textColor justify-between items-center'>
             <span><FaHeart size={22} /></span>
