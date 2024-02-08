@@ -65,11 +65,11 @@ function Navbar() {
         <div>
            
             <div className=' flex gap-2 p-3 flex-col bg-primaryColor items-center justify-center'>
-                <h1 className='text-textColor text-4xl'>STEPHANE</h1>
+                <h1 className='text-textColor text-4xl uppercase border-solid py-1 px-2 border'>c e</h1>
                 <div className=' h-[1px] bg-textColor w-[30%]'>
-
+                
                 </div>
-                <h2 className='text-textColor text-2xl'>FINE ART PHOTOGRAPHY</h2>
+                <h2 className='text-textColor uppercase text-2xl'>chvrlie expeditions</h2>
 
             </div>
             <div className='bg-secondaryColor'>
